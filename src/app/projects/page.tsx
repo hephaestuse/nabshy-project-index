@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import projects from "@/data/projects.json";
-import { ProjectsExperience } from "@/components/projects/ProjectsExperience";
-import type { Project } from "@/types/project";
+import { LocalizedProjectsPage } from "@/components/projects/LocalizedProjectsPage";
 
 export const metadata: Metadata = {
   title: "Projects | Nabshy Pro",
@@ -9,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
-  return <ProjectsExperience projects={projects as Project[]} />;
+  return <LocalizedProjectsPage locale="en" />;
 }

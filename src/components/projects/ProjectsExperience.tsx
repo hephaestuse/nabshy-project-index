@@ -1,16 +1,24 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import type { ProjectsMessages } from "@/data/projects-localization";
 import { HeroSection } from "./HeroSection";
 import { ProjectsSection } from "./ProjectsSection";
 import { RegistrationModal } from "./RegistrationModal";
-import type { Project } from "@/types/project";
+import type { Locale } from "@/types/locale";
+import type { LocalizedProject } from "@/types/project";
 
 type ProjectsExperienceProps = {
-  projects: Project[];
+  locale: Locale;
+  messages: ProjectsMessages;
+  projects: LocalizedProject[];
 };
 
-export function ProjectsExperience({ projects }: ProjectsExperienceProps) {
+export function ProjectsExperience({
+  locale,
+  messages,
+  projects,
+}: ProjectsExperienceProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -38,10 +46,15 @@ export function ProjectsExperience({ projects }: ProjectsExperienceProps) {
   }, [showSuccess]);
 
   return (
-    <>
-      <HeroSection onOpenRegistration={openRegistration} />
-      <ProjectsSection projects={projects} onRegister={openRegistration} />
+    <div lang={locale} dir={messages.dir}>
+      <HeroSection messages={messages} onOpenRegistration={openRegistration} />
+      <ProjectsSection
+        messages={messages}
+        projects={projects}
+        onRegister={openRegistration}
+      />
       <RegistrationModal
+        messages={messages}
         isOpen={isModalOpen}
         onClose={closeRegistration}
         onSuccess={handleSuccess}
@@ -51,9 +64,9 @@ export function ProjectsExperience({ projects }: ProjectsExperienceProps) {
           role="status"
           className="fixed bottom-5 left-1/2 z-40 w-[min(calc(100vw-2rem),32rem)] -translate-x-1/2 bg-[#071A33] px-5 py-4 text-center text-sm font-medium text-white shadow-none"
         >
-          Registration completed. Download will be enabled in the next phase.
+          {messages.successMessage}
         </div>
       ) : null}
-    </>
+    </div>
   );
 }

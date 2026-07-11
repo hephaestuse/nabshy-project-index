@@ -3,6 +3,14 @@
 Premium real-estate brochure website prototype built with Next.js App Router,
 TypeScript, Tailwind CSS, ESLint, and local assets only.
 
+Routes:
+
+```text
+/            Home page
+/projects    English projects page
+/fa/projects Persian projects page
+```
+
 ## Run Locally
 
 ```bash

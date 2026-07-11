@@ -8,3 +8,7 @@ export type Project = {
   image: string;
   brochure: string;
 };
+
+export type LocalizedProject = Project & {
+  imageAlt: string;
+};
