@@ -1,0 +1,62 @@
+[
+  {
+    "id": "project-1",
+    "title": "AVARRA",
+    "subtitle": "BY PALACE",
+    "location": "BUSINESS BAY",
+    "propertyType": "Apartments",
+    "startingPrice": "AED 2.7 Mn",
+    "image": "/images/projects/project-1.jpg",
+    "brochure": "#"
+  },
+  {
+    "id": "project-2",
+    "title": "AVELIA | OVELLE",
+    "subtitle": "THE VALLEY",
+    "location": "THE VALLEY",
+    "propertyType": "Villas",
+    "startingPrice": "AED 7.2 Mn",
+    "image": "/images/projects/project-2.jpg",
+    "brochure": "#"
+  },
+  {
+    "id": "project-3",
+    "title": "CREEK BAY",
+    "subtitle": "DUBAI CREEK HARBOUR",
+    "location": "DUBAI CREEK HARBOUR",
+    "propertyType": "Apartments",
+    "startingPrice": "AED 1.8 Mn",
+    "image": "/images/projects/project-3.jpg",
+    "brochure": "#"
+  },
+  {
+    "id": "project-4",
+    "title": "FIOR",
+    "subtitle": "RASHID YACHTS & MARINA",
+    "location": "RASHID YACHTS & MARINA",
+    "propertyType": "Apartments",
+    "startingPrice": "AED 2.2 Mn",
+    "image": "/images/projects/project-4.jpg",
+    "brochure": "#"
+  },
+  {
+    "id": "project-5",
+    "title": "SALVA",
+    "subtitle": "THE HEIGHTS",
+    "location": "THE HEIGHTS",
+    "propertyType": "Villas",
+    "startingPrice": "AED 6.7 Mn",
+    "image": "/images/projects/project-5.jpg",
+    "brochure": "#"
+  },
+  {
+    "id": "project-6",
+    "title": "TERRA WOODS",
+    "subtitle": "EXPO LIVING",
+    "location": "EXPO LIVING",
+    "propertyType": "Apartments",
+    "startingPrice": "AED 1.6 Mn",
+    "image": "/images/projects/project-6.jpg",
+    "brochure": "#"
+  }
+]

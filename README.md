@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nabshy Pro UI Prototype
 
-## Getting Started
+Premium real-estate brochure website prototype built with Next.js App Router,
+TypeScript, Tailwind CSS, ESLint, and local assets only.
 
-First, run the development server:
+## Run Locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Useful checks:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Replace Images
 
-## Learn More
+Home split-screen images live in:
 
-To learn more about Next.js, take a look at the following resources:
+```text
+public/images/home/
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Project card images live in:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+public/images/projects/
+```
 
-## Deploy on Vercel
+Hero media placeholder lives in:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+public/media/projects-hero.jpg
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The hero component is ready to swap to a GIF, WebM, or MP4 later, but this
+prototype uses a local image.
+
+## Edit Projects
+
+Project data is read from:
+
+```text
+src/data/projects.json
+```
+
+The shared TypeScript shape is defined in:
+
+```text
+src/types/project.ts
+```
+
+## Mocked Functionality
+
+Registration and download actions are frontend-only mocks. There is no backend,
+database, authentication, persistence, analytics, tracking, API route, or real
+file download in this phase.
