@@ -27,6 +27,8 @@ export type ProjectsMessages = {
   closeModal: string;
   continueToDownload: string;
   successMessage: string;
+  languageSwitchLabel: string;
+  languageSwitchTarget: string;
   validation: {
     fullNameRequired: string;
     phoneRequired: string;
@@ -55,6 +57,8 @@ const englishMessages: ProjectsMessages = {
   continueToDownload: "Continue to Download",
   successMessage:
     "Registration completed. Download will be enabled in the next phase.",
+  languageSwitchLabel: "Switch language to Persian",
+  languageSwitchTarget: "fa",
   validation: {
     fullNameRequired: "Full name is required.",
     phoneRequired: "Phone number is required.",
@@ -91,6 +95,8 @@ const persianMessages: ProjectsMessages = {
   continueToDownload: "ادامه برای دانلود",
   successMessage:
     "ثبت‌نام انجام شد. دانلود در مرحله بعدی فعال خواهد شد.",
+  languageSwitchLabel: "تغییر زبان به انگلیسی",
+  languageSwitchTarget: "en",
   validation: {
     fullNameRequired: "وارد کردن نام و نام خانوادگی الزامی است.",
     phoneRequired: "وارد کردن شماره تماس الزامی است.",

@@ -20,8 +20,8 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const titleClassName =
     messages.locale === "fa"
-      ? "font-sans text-[clamp(2rem,4.6vw,3.9rem)] font-light leading-none tracking-normal"
-      : "font-serif text-[clamp(2rem,4.6vw,3.9rem)] font-light uppercase leading-none tracking-[0.03em]";
+      ? "text-[clamp(2rem,4.6vw,3.9rem)] font-light leading-none tracking-normal"
+      : "text-[clamp(2rem,4.6vw,3.9rem)] font-light uppercase leading-none tracking-[0.03em]";
   const subtitleClassName =
     messages.locale === "fa"
       ? "mt-2 text-sm font-semibold text-white/82"

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import type { ProjectsMessages } from "@/data/projects-localization";
 import { HeroSection } from "./HeroSection";
+import { LanguageSwitch } from "./LanguageSwitch";
 import { ProjectsSection } from "./ProjectsSection";
 import { RegistrationModal } from "./RegistrationModal";
 import type { Locale } from "@/types/locale";
@@ -46,7 +47,14 @@ export function ProjectsExperience({
   }, [showSuccess]);
 
   return (
-    <div lang={locale} dir={messages.dir}>
+    <div
+      lang={locale}
+      dir={messages.dir}
+      className={
+        locale === "fa" ? "projects-locale-fa" : "projects-locale-en"
+      }
+    >
+      <LanguageSwitch locale={locale} messages={messages} />
       <HeroSection messages={messages} onOpenRegistration={openRegistration} />
       <ProjectsSection
         messages={messages}

@@ -1,5 +1,85 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Zalando Sans Expanded";
+  src: url("/fonts/english/ZalandoSansExpanded-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zalando Sans Expanded";
+  src: url("/fonts/english/ZalandoSansExpanded-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zalando Sans Expanded";
+  src: url("/fonts/english/ZalandoSansExpanded-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zalando Sans Expanded";
+  src: url("/fonts/english/ZalandoSansExpanded-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zalando Sans Expanded";
+  src: url("/fonts/english/ZalandoSansExpanded-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Abar Low";
+  src: url("/fonts/persian/AbarLow-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Abar Low";
+  src: url("/fonts/persian/AbarLow-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Abar Low";
+  src: url("/fonts/persian/AbarLow-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Abar Low";
+  src: url("/fonts/persian/AbarLow-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Abar Low";
+  src: url("/fonts/persian/AbarLow-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #f7f5f0;
   --foreground: #080808;
@@ -17,6 +97,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.projects-locale-en {
+  font-family: "Zalando Sans Expanded", Arial, Helvetica, sans-serif;
+}
+
+.projects-locale-fa {
+  font-family: "Abar Low", Tahoma, Arial, sans-serif;
 }
 
 * {
