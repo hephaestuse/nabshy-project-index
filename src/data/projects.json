@@ -8,7 +8,7 @@
     "usage": "مسکونی",
     "propertyType": "Apartments",
     "startingPrice": "AED 2.7 Mn",
-    "image": "/images/projects/project-1.jpg",
+    "image": "/images/projects/Project_Huner.png",
     "brochure": "#"
   },
   {
@@ -20,7 +20,7 @@
     "usage": "ویلایی",
     "propertyType": "Villas",
     "startingPrice": "AED 7.2 Mn",
-    "image": "/images/projects/project-2.jpg",
+    "image": "/images/projects/Project_Mehr M25.png",
     "brochure": "#"
   },
   {
@@ -32,7 +32,7 @@
     "usage": "مسکونی",
     "propertyType": "Apartments",
     "startingPrice": "AED 1.8 Mn",
-    "image": "/images/projects/project-3.jpg",
+    "image": "/images/projects/Project_Mehr M29.png",
     "brochure": "#"
   },
   {
@@ -44,7 +44,7 @@
     "usage": "تجاری اداری",
     "propertyType": "Apartments",
     "startingPrice": "AED 2.2 Mn",
-    "image": "/images/projects/project-4.jpg",
+    "image": "/images/projects/Project_V Golshan4.png",
     "brochure": "#"
   },
   {
@@ -56,7 +56,7 @@
     "usage": "ویلایی",
     "propertyType": "Villas",
     "startingPrice": "AED 6.7 Mn",
-    "image": "/images/projects/project-5.jpg",
+    "image": "/images/projects/Project_V Marjan.png",
     "brochure": "#"
   },
   {
@@ -68,7 +68,7 @@
     "usage": "مسکونی",
     "propertyType": "Apartments",
     "startingPrice": "AED 1.6 Mn",
-    "image": "/images/projects/project-6.jpg",
+    "image": "/images/projects/Project_Zoya Mina3.png",
     "brochure": "#"
   }
 ]
