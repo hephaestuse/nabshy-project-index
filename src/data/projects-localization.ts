@@ -1,6 +1,10 @@
 import baseProjects from "@/data/projects.json";
 import type { Locale } from "@/types/locale";
-import type { LocalizedProject, Project } from "@/types/project";
+import {
+  ProjectUsage,
+  type LocalizedProject,
+  type Project,
+} from "@/types/project";
 
 type ProjectText = Pick<
   Project,
@@ -16,6 +20,11 @@ export type ProjectsMessages = {
   downloadFactSheet: string;
   scrollToProjects: string;
   sectionTitle: string;
+  cityFilterPlaceholder: string;
+  allUsages: string;
+  usageLabels: Record<ProjectUsage, string>;
+  resetFilters: string;
+  noProjectsTitle: string;
   startingFrom: string;
   registerInterest: string;
   modalTitle: string;
@@ -44,6 +53,15 @@ const englishMessages: ProjectsMessages = {
   downloadFactSheet: "Download",
   scrollToProjects: "Scroll to trending projects",
   sectionTitle: " Projects",
+  cityFilterPlaceholder: "Search cities",
+  allUsages: "type",
+  usageLabels: {
+    [ProjectUsage.Residential]: "Residential",
+    [ProjectUsage.Villa]: "Villa",
+    [ProjectUsage.CommercialOffice]: "Commercial Office",
+  },
+  resetFilters: "Reset filters",
+  noProjectsTitle: "No projects match these filters.",
   startingFrom: "Starting From",
   registerInterest: "Register Interest",
   modalTitle: "Register Interest",
@@ -82,6 +100,15 @@ const persianMessages: ProjectsMessages = {
   downloadFactSheet: "دانلود",
   scrollToProjects: "رفتن به پروژه‌های منتخب",
   sectionTitle: "پروژه‌ها",
+  cityFilterPlaceholder: "جستجوی شهرهای",
+  allUsages: "کاربری",
+  usageLabels: {
+    [ProjectUsage.Residential]: "مسکونی",
+    [ProjectUsage.Villa]: "ویلایی",
+    [ProjectUsage.CommercialOffice]: "تجاری اداری",
+  },
+  resetFilters: "حذف فیلترها",
+  noProjectsTitle: "پروژه‌ای با این فیلترها پیدا نشد.",
   startingFrom: "شروع قیمت از",
   registerInterest: "ثبت علاقه‌مندی",
   modalTitle: "ثبت علاقه‌مندی",

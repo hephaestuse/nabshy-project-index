@@ -2,19 +2,19 @@ import { HomeSplitSection } from "@/components/home/HomeSplitSection";
 
 const sections = [
   {
-    title: "Curated Projects",
+    title: "project index",
     subtitle: "Dubai investment index",
     href: "/projects",
     image: "/images/home/section-1.jpg",
   },
   {
-    title: "Private Advisory",
+    title: "branding agency",
     subtitle: "Broker-led opportunities",
     href: "#advisory",
     image: "/images/home/section-2.jpg",
   },
   {
-    title: "Market Briefs",
+    title: "material index",
     subtitle: "Premium launch intelligence",
     href: "#briefs",
     image: "/images/home/section-3.jpg",

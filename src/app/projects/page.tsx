@@ -9,4 +9,3 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return <LocalizedProjectsPage locale="en" />;
 }
-5
