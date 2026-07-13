@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useDeferredValue, useMemo, useState } from "react";
 import iranCities from "@/data/iran_cities.json";
 import type { ProjectsMessages } from "@/data/projects-localization";
 import { ProjectUsage, type LocalizedProject } from "@/types/project";
@@ -25,11 +25,7 @@ const usageOptions = [
   ProjectUsage.CommercialOffice,
 ];
 
-const cityOptions = (iranCities as IranCity[]).map((city, index) => ({
-  id: `${city.provinceId}-${city.cityId}-${index}`,
-  name: city.cityName,
-  province: city.provinceName,
-}));
+const citySuggestionLimit = 8;
 
 function normalizePersianSearch(value: string) {
   return value
@@ -40,6 +36,18 @@ function normalizePersianSearch(value: string) {
     .toLocaleLowerCase("fa-IR");
 }
 
+const cityOptions = (iranCities as IranCity[]).map((city, index) => {
+  const normalizedName = normalizePersianSearch(city.cityName);
+  const normalizedProvince = normalizePersianSearch(city.provinceName);
+
+  return {
+    id: `${city.provinceId}-${city.cityId}-${index}`,
+    name: city.cityName,
+    province: city.provinceName,
+    normalizedSearch: `${normalizedName} ${normalizedProvince}`,
+  };
+});
+
 export function ProjectsSection({
   messages,
   projects,
@@ -47,22 +55,67 @@ export function ProjectsSection({
 }: ProjectsSectionProps) {
   const [cityFilter, setCityFilter] = useState("");
   const [usageFilter, setUsageFilter] = useState("");
+  const [citySuggestionsOpen, setCitySuggestionsOpen] = useState(false);
+  const deferredCityFilter = useDeferredValue(cityFilter);
+  const normalizedCityFilter = useMemo(
+    () => normalizePersianSearch(deferredCityFilter),
+    [deferredCityFilter],
+  );
+
+  const projectSearchRows = useMemo(
+    () =>
+      projects.map((project) => ({
+        project,
+        normalizedCity: normalizePersianSearch(project.city),
+      })),
+    [projects],
+  );
+
+  const visibleCityOptions = useMemo(() => {
+    if (normalizedCityFilter.length === 0) {
+      return [];
+    }
+
+    const matches = [];
+
+    for (const city of cityOptions) {
+      if (!city.normalizedSearch.includes(normalizedCityFilter)) {
+        continue;
+      }
+
+      matches.push(city);
+
+      if (matches.length === citySuggestionLimit) {
+        break;
+      }
+    }
+
+    return matches;
+  }, [normalizedCityFilter]);
 
   const filteredProjects = useMemo(() => {
-    const normalizedCityFilter = normalizePersianSearch(cityFilter);
+    const matches = [];
 
-    return projects.filter((project) => {
+    for (const { project, normalizedCity } of projectSearchRows) {
       const cityMatches =
         normalizedCityFilter.length === 0 ||
-        normalizePersianSearch(project.city).includes(normalizedCityFilter);
+        normalizedCity.includes(normalizedCityFilter);
       const usageMatches =
         usageFilter.length === 0 || project.usage === usageFilter;
 
-      return cityMatches && usageMatches;
-    });
-  }, [cityFilter, projects, usageFilter]);
+      if (cityMatches && usageMatches) {
+        matches.push(project);
+      }
+    }
+
+    return matches;
+  }, [normalizedCityFilter, projectSearchRows, usageFilter]);
 
   const hasFilters = cityFilter.length > 0 || usageFilter.length > 0;
+  const hasCitySuggestions =
+    citySuggestionsOpen &&
+    normalizedCityFilter.length > 0 &&
+    visibleCityOptions.length > 0;
   const headingClassName =
     messages.locale === "fa"
       ? "text-start text-3xl font-semibold sm:text-4xl"
@@ -78,20 +131,52 @@ export function ProjectsSection({
           <h2 className={headingClassName}>{messages.sectionTitle}</h2>
 
           <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(11rem,14rem)_auto] sm:items-end lg:w-[44rem]">
-            <input
-              type="search"
-              list="iran-city-options"
-              value={cityFilter}
-              onChange={(event) => setCityFilter(event.target.value)}
-              placeholder={messages.cityFilterPlaceholder}
-              className=" h-12 w-full border border-[#071A33]/20 bg-white px-4 text-sm text-[#080808] outline-none transition focus:border-[#071A33] focus:ring-2 focus:ring-[#071A33]/15"
-            />
+            <div className="relative">
+              <input
+                type="search"
+                value={cityFilter}
+                onChange={(event) => {
+                  setCityFilter(event.target.value);
+                  setCitySuggestionsOpen(true);
+                }}
+                onFocus={() => setCitySuggestionsOpen(true)}
+                onBlur={() => setCitySuggestionsOpen(false)}
+                placeholder={messages.cityFilterPlaceholder}
+                role="combobox"
+                aria-autocomplete="list"
+                aria-controls="iran-city-options"
+                aria-expanded={hasCitySuggestions}
+                aria-label={messages.cityFilterPlaceholder}
+                className="h-12 w-full border border-[#071A33]/20 bg-white px-4 text-sm text-[#080808] outline-none transition focus:border-[#071A33] focus:ring-2 focus:ring-[#071A33]/15"
+              />
 
-            <datalist id="iran-city-options">
-              {cityOptions.map((city) => (
-                <option key={city.id} value={city.name} label={city.province} />
-              ))}
-            </datalist>
+              {hasCitySuggestions ? (
+                <ul
+                  id="iran-city-options"
+                  role="listbox"
+                  className="absolute left-0 right-0 top-[calc(100%+0.35rem)] z-20 max-h-72 overflow-auto border border-[#071A33]/12 bg-white shadow-lg"
+                >
+                  {visibleCityOptions.map((city) => (
+                    <li key={city.id} role="option" aria-selected={false}>
+                      <button
+                        type="button"
+                        onMouseDown={(event) => event.preventDefault()}
+                        onClick={() => {
+                          setCityFilter(city.name);
+                          setCitySuggestionsOpen(false);
+                        }}
+                        className="flex w-full items-center justify-between gap-4 px-4 py-3 text-start text-sm text-[#080808] transition hover:bg-[#f7f5f0] focus:bg-[#f7f5f0] focus:outline-none"
+                      >
+                        <span>{city.name}</span>
+                        <span className="text-xs text-[#071A33]/55">
+                          {city.province}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
 
             <select
               value={usageFilter}
