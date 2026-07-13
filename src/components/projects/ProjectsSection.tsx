@@ -17,8 +17,8 @@ export function ProjectsSection({
 }: ProjectsSectionProps) {
   const headingClassName =
     messages.locale === "fa"
-      ? "mb-10 text-center text-3xl font-light tracking-normal sm:text-4xl md:mb-14"
-      : "mb-10 text-center text-3xl font-light uppercase tracking-[0.12em] sm:text-4xl md:mb-14";
+      ? "mb-10 text-satart text-3xl font-semibold sm:text-4xl md:mb-14"
+      : "mb-10 text-start text-3xl font-semibold uppercase sm:text-4xl md:mb-14";
 
   return (
     <section id="projects-grid" className="bg-[#f7f5f0] px-5 py-16 text-[#080808] sm:px-8 md:py-24">

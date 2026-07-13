@@ -27,11 +27,11 @@ export function HeroSection({
         className="object-cover"
       />
       <div className="absolute inset-0 bg-black/38" />
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+      <div className="relative z-10 flex h-full flex-col items-center justify-end px-6 text-center">
         <button
           type="button"
           onClick={onOpenRegistration}
-          className={buttonClassName}
+          className={`mb-36 ${buttonClassName}`}
         >
           {messages.downloadFactSheet}
         </button>
