@@ -21,10 +21,12 @@ export function HeroSection({
       <HeroBackgroundVideo />
       <div className="absolute inset-0 bg-black/38" />
       <div className="relative z-10 flex h-full flex-col items-center justify-end px-6 text-center">
-        <span className="font-medium mb-5 text-3xl md:text-3xl lg:text-6xl tracking-[0] uppercase ">
-          project index 
-        </span>
-        <span className="uppercase mb-72 text-sm font-light">by nabshy</span>
+        <div className="flex flex-col my-auto">
+          <span className="font-medium mb-5 text-3xl md:text-3xl lg:text-6xl uppercase ">
+            project index
+          </span>
+          <span className="uppercase text-sm font-light">by nabshy</span>
+        </div>
         <button
           type="button"
           onClick={onOpenRegistration}
