@@ -3,13 +3,13 @@ import { HomeSplitSection } from "@/components/home/HomeSplitSection";
 const sections = [
   {
     title: "project index",
-    subtitle: "Dubai investment index",
+    subtitle: "Specialized Journal of Construction Projects",
     href: "/projects",
     image: "/images/home/section-1.jpg",
   },
   {
     title: "branding agency",
-    subtitle: "Broker-led opportunities",
+    subtitle: "Construction Industry Branding Agency",
     href: "#advisory",
     image: "/images/home/section-2.jpg",
   },

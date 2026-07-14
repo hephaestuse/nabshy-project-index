@@ -63,7 +63,7 @@ const englishMessages: ProjectsMessages = {
   resetFilters: "Reset filters",
   noProjectsTitle: "No projects match these filters.",
   startingFrom: "Starting From",
-  registerInterest: "Register Interest",
+  registerInterest: "download",
   modalTitle: "Register Interest",
   modalDescription:
     "Enter your details to continue. This prototype keeps registration and downloads mocked.",
@@ -110,7 +110,7 @@ const persianMessages: ProjectsMessages = {
   resetFilters: "حذف فیلترها",
   noProjectsTitle: "پروژه‌ای با این فیلترها پیدا نشد.",
   startingFrom: "شروع قیمت از",
-  registerInterest: "ثبت علاقه‌مندی",
+  registerInterest: "دریافت",
   modalTitle: "ثبت علاقه‌مندی",
   modalDescription:
     "برای ادامه، اطلاعات خود را وارد کنید. ثبت‌نام و دانلود در این نمونه فقط نمایشی هستند.",
