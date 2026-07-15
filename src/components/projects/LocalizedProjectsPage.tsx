@@ -1,20 +1,22 @@
 import { ProjectsExperience } from "@/components/projects/ProjectsExperience";
-import {
-  getLocalizedProjects,
-  getProjectsMessages,
-} from "@/data/projects-localization";
+import { getProjectsMessages } from "@/data/projects-localization";
 import type { Locale } from "@/types/locale";
+import type { ProjectCardData } from "@/types/project";
 
 type LocalizedProjectsPageProps = {
   locale: Locale;
+  projects: ProjectCardData[];
 };
 
-export function LocalizedProjectsPage({ locale }: LocalizedProjectsPageProps) {
+export function LocalizedProjectsPage({
+  locale,
+  projects,
+}: LocalizedProjectsPageProps) {
   return (
     <ProjectsExperience
       locale={locale}
       messages={getProjectsMessages(locale)}
-      projects={getLocalizedProjects(locale)}
+      projects={projects}
     />
   );
 }

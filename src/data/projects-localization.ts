@@ -1,17 +1,4 @@
-import baseProjects from "@/data/projects.json";
 import type { Locale } from "@/types/locale";
-import {
-  ProjectUsage,
-  type LocalizedProject,
-  type Project,
-} from "@/types/project";
-
-type ProjectText = Pick<
-  Project,
-  "title" | "subtitle" | "location" | "propertyType" | "startingPrice"
-> & {
-  imageAlt: string;
-};
 
 export type ProjectsMessages = {
   locale: Locale;
@@ -22,7 +9,6 @@ export type ProjectsMessages = {
   sectionTitle: string;
   cityFilterPlaceholder: string;
   allUsages: string;
-  usageLabels: Record<ProjectUsage, string>;
   resetFilters: string;
   noProjectsTitle: string;
   startingFrom: string;
@@ -55,11 +41,6 @@ const englishMessages: ProjectsMessages = {
   sectionTitle: " Projects",
   cityFilterPlaceholder: "Search cities",
   allUsages: "type",
-  usageLabels: {
-    [ProjectUsage.Residential]: "Residential",
-    [ProjectUsage.Villa]: "Villa",
-    [ProjectUsage.CommercialOffice]: "Commercial Office",
-  },
   resetFilters: "Reset filters",
   noProjectsTitle: "No projects match these filters.",
   startingFrom: "Starting From",
@@ -102,11 +83,6 @@ const persianMessages: ProjectsMessages = {
   sectionTitle: "پروژه‌ها",
   cityFilterPlaceholder: "جستجوی شهرهای",
   allUsages: "کاربری",
-  usageLabels: {
-    [ProjectUsage.Residential]: "مسکونی",
-    [ProjectUsage.Villa]: "ویلایی",
-    [ProjectUsage.CommercialOffice]: "تجاری اداری",
-  },
   resetFilters: "حذف فیلترها",
   noProjectsTitle: "پروژه‌ای با این فیلترها پیدا نشد.",
   startingFrom: "شروع قیمت از",
@@ -140,57 +116,6 @@ const persianMessages: ProjectsMessages = {
   ],
 };
 
-const persianProjects: Record<string, ProjectText> = {
-  "project-1": {
-    title: "آوارا",
-    subtitle: "بای پالاس",
-    location: "بیزنس بی",
-    propertyType: "آپارتمان‌ها",
-    startingPrice: "۲.۷ میلیون درهم",
-    imageAlt: "پروژه آوارا، آپارتمان‌ها در بیزنس بی",
-  },
-  "project-2": {
-    title: "اولیا | اوول",
-    subtitle: "د ولی",
-    location: "د ولی",
-    propertyType: "ویلاها",
-    startingPrice: "۷.۲ میلیون درهم",
-    imageAlt: "پروژه اولیا و اوول، ویلاها در د ولی",
-  },
-  "project-3": {
-    title: "کریک بی",
-    subtitle: "دبی کریک هاربر",
-    location: "دبی کریک هاربر",
-    propertyType: "آپارتمان‌ها",
-    startingPrice: "۱.۸ میلیون درهم",
-    imageAlt: "پروژه کریک بی، آپارتمان‌ها در دبی کریک هاربر",
-  },
-  "project-4": {
-    title: "فیور",
-    subtitle: "رشید یاتس و مارینا",
-    location: "رشید یاتس و مارینا",
-    propertyType: "آپارتمان‌ها",
-    startingPrice: "۲.۲ میلیون درهم",
-    imageAlt: "پروژه فیور، آپارتمان‌ها در رشید یاتس و مارینا",
-  },
-  "project-5": {
-    title: "سالوا",
-    subtitle: "د هایتس",
-    location: "د هایتس",
-    propertyType: "ویلاها",
-    startingPrice: "۶.۷ میلیون درهم",
-    imageAlt: "پروژه سالوا، ویلاها در د هایتس",
-  },
-  "project-6": {
-    title: "ترا وودز",
-    subtitle: "اکسپو لیوینگ",
-    location: "اکسپو لیوینگ",
-    propertyType: "آپارتمان‌ها",
-    startingPrice: "۱.۶ میلیون درهم",
-    imageAlt: "پروژه ترا وودز، آپارتمان‌ها در اکسپو لیوینگ",
-  },
-};
-
 const messagesByLocale = {
   en: englishMessages,
   fa: persianMessages,
@@ -198,20 +123,4 @@ const messagesByLocale = {
 
 export function getProjectsMessages(locale: Locale) {
   return messagesByLocale[locale];
-}
-
-export function getLocalizedProjects(locale: Locale): LocalizedProject[] {
-  const projects = baseProjects as Project[];
-
-  if (locale === "en") {
-    return projects.map((project) => ({
-      ...project,
-      imageAlt: `${project.title} ${project.propertyType} in ${project.location}`,
-    }));
-  }
-
-  return projects.map((project) => ({
-    ...project,
-    ...persianProjects[project.id],
-  }));
 }

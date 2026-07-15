@@ -3,7 +3,7 @@
 import { useDeferredValue, useMemo, useState } from "react";
 import iranCities from "@/data/iran_cities.json";
 import type { ProjectsMessages } from "@/data/projects-localization";
-import { ProjectUsage, type LocalizedProject } from "@/types/project";
+import type { ProjectCardData } from "@/types/project";
 import { ProjectCard } from "./ProjectCard";
 
 type IranCity = {
@@ -15,15 +15,9 @@ type IranCity = {
 
 type ProjectsSectionProps = {
   messages: ProjectsMessages;
-  projects: LocalizedProject[];
+  projects: ProjectCardData[];
   onRegister: () => void;
 };
-
-const usageOptions = [
-  ProjectUsage.Residential,
-  ProjectUsage.Villa,
-  ProjectUsage.CommercialOffice,
-];
 
 const citySuggestionLimit = 8;
 
@@ -66,8 +60,23 @@ export function ProjectsSection({
     () =>
       projects.map((project) => ({
         project,
-        normalizedCity: normalizePersianSearch(project.city),
+        normalizedSearch: normalizePersianSearch(
+          [
+            project.title,
+            project.subtitle,
+            project.city,
+            project.developerName,
+            project.address,
+          ]
+            .filter(Boolean)
+            .join(" "),
+        ),
       })),
+    [projects],
+  );
+
+  const usageOptions = useMemo(
+    () => Array.from(new Set(projects.map((project) => project.usage))),
     [projects],
   );
 
@@ -96,10 +105,10 @@ export function ProjectsSection({
   const filteredProjects = useMemo(() => {
     const matches = [];
 
-    for (const { project, normalizedCity } of projectSearchRows) {
+    for (const { project, normalizedSearch } of projectSearchRows) {
       const cityMatches =
         normalizedCityFilter.length === 0 ||
-        normalizedCity.includes(normalizedCityFilter);
+        normalizedSearch.includes(normalizedCityFilter);
       const usageMatches =
         usageFilter.length === 0 || project.usage === usageFilter;
 
@@ -186,7 +195,7 @@ export function ProjectsSection({
               <option value="">{messages.allUsages}</option>
               {usageOptions.map((usage) => (
                 <option key={usage} value={usage}>
-                  {messages.usageLabels[usage]}
+                  {usage}
                 </option>
               ))}
             </select>

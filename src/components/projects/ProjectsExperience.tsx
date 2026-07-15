@@ -7,12 +7,12 @@ import { LanguageSwitch } from "./LanguageSwitch";
 import { ProjectsSection } from "./ProjectsSection";
 import { RegistrationModal } from "./RegistrationModal";
 import type { Locale } from "@/types/locale";
-import type { LocalizedProject } from "@/types/project";
+import type { ProjectCardData } from "@/types/project";
 
 type ProjectsExperienceProps = {
   locale: Locale;
   messages: ProjectsMessages;
-  projects: LocalizedProject[];
+  projects: ProjectCardData[];
 };
 
 export function ProjectsExperience({

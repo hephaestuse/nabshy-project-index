@@ -1,22 +1,11 @@
-export enum ProjectUsage {
-  Residential = "مسکونی",
-  Villa = "ویلایی",
-  CommercialOffice = "تجاری اداری",
-}
-
-export type Project = {
+export type ProjectCardData = {
   id: string;
+  slug: string;
   title: string;
-  subtitle: string;
-  location: string;
+  subtitle?: string | null;
   city: string;
-  usage: ProjectUsage;
-  propertyType: string;
-  startingPrice: string;
-  image: string;
-  brochure: string;
-};
-
-export type LocalizedProject = Project & {
-  imageAlt: string;
+  developerName: string;
+  usage: string;
+  address: string;
+  image: string | null;
 };

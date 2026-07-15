@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Project {
+  id String @id @default(cuid())
+
+  slug String @unique
+
+  titleFa String
+  titleEn String
+
+  cityFa String
+  cityEn String
+
+  developerNameFa String
+  developerNameEn String
+
+  usageFa String
+  usageEn String
+
+  addressFa String
+  addressEn String
+
+  imagePath    String?
+  brochureFile String?
+
+  isActive  Boolean @default(true)
+  sortOrder Int     @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isActive, sortOrder])
+}
