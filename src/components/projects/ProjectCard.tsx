@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import type { ProjectsMessages } from "@/data/projects-localization";
+import type { DownloadTarget } from "@/types/download";
 import type { ProjectCardData } from "@/types/project";
 import { LocationIcon } from "./LocationIcon";
 
 type ProjectCardProps = {
   messages: ProjectsMessages;
   project: ProjectCardData;
-  onRegister: () => void;
+  onRegister: (target: DownloadTarget) => void;
   priority?: boolean;
 };
 
@@ -20,8 +21,8 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const titleClassName =
     messages.locale === "fa"
-      ? "text-3xl font-light leading-none"
-      : "text-3xl font-light uppercase leading-none ";
+      ? "text-5xl font-light leading-none"
+      : "text-5xl font-light uppercase leading-none ";
 
   const ctaClassName =
     messages.locale === "fa"
@@ -58,7 +59,17 @@ export function ProjectCard({
       </div>
 
       <div className="absolute inset-0 flex items-center justify-center px-7">
-        <button type="button" onClick={onRegister} className={ctaClassName}>
+        <button
+          type="button"
+          onClick={() =>
+            onRegister({
+              type: "project",
+              slug: project.slug,
+              title: project.title,
+            })
+          }
+          className={ctaClassName}
+        >
           {messages.registerInterest}
         </button>
       </div>

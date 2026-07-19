@@ -3,6 +3,7 @@
 import { useDeferredValue, useMemo, useState } from "react";
 import iranCities from "@/data/iran_cities.json";
 import type { ProjectsMessages } from "@/data/projects-localization";
+import type { DownloadTarget } from "@/types/download";
 import type { ProjectCardData } from "@/types/project";
 import { ProjectCard } from "./ProjectCard";
 
@@ -16,7 +17,7 @@ type IranCity = {
 type ProjectsSectionProps = {
   messages: ProjectsMessages;
   projects: ProjectCardData[];
-  onRegister: () => void;
+  onRegister: (target: DownloadTarget) => void;
 };
 
 const citySuggestionLimit = 8;
@@ -60,17 +61,7 @@ export function ProjectsSection({
     () =>
       projects.map((project) => ({
         project,
-        normalizedSearch: normalizePersianSearch(
-          [
-            project.title,
-            project.subtitle,
-            project.city,
-            project.developerName,
-            project.address,
-          ]
-            .filter(Boolean)
-            .join(" "),
-        ),
+        normalizedSearch: normalizePersianSearch(project.citySearchText),
       })),
     [projects],
   );

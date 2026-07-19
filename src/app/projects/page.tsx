@@ -8,7 +8,16 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectsPage() {
-  const projects = await projectService.getActiveProjects("en");
+  const [projects, heroDownloadTarget] = await Promise.all([
+    projectService.getActiveProjects("en"),
+    projectService.getHeroDownloadTarget("en"),
+  ]);
 
-  return <LocalizedProjectsPage locale="en" projects={projects} />;
+  return (
+    <LocalizedProjectsPage
+      locale="en"
+      projects={projects}
+      heroDownloadTarget={heroDownloadTarget}
+    />
+  );
 }

@@ -4,6 +4,7 @@ export type ProjectCardData = {
   title: string;
   subtitle?: string | null;
   city: string;
+  citySearchText: string;
   developerName: string;
   usage: string;
   address: string;

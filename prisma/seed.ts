@@ -18,6 +18,11 @@ type SeedProject = {
   address: LocalizedValue;
 };
 
+type AssetMapping = {
+  imagePath?: string;
+  brochureFile: string;
+};
+
 const adapter = new PrismaPg(process.env.DATABASE_URL ?? "");
 const prisma = new PrismaClient({ adapter });
 
@@ -34,7 +39,7 @@ const slugByTitleEn = {
   "Mina 3": "mina-3",
 } satisfies Record<string, string>;
 
-const assetMappings = {
+const assetMappings: Record<string, AssetMapping> = {
   marjan: {
     imagePath: "/images/projects/Project_V Marjan.png",
     brochureFile: "project-5-brochure.pdf",
@@ -59,7 +64,10 @@ const assetMappings = {
     imagePath: "/images/projects/Project_Zoya Mina3.png",
     brochureFile: "project-6-brochure.pdf",
   },
-} satisfies Record<string, { imagePath: string; brochureFile: string }>;
+  "bozorgmehr-13": {
+    brochureFile: "project-7-brochure.pdf",
+  },
+};
 
 function requiredString(value: unknown, fieldName: string) {
   if (typeof value !== "string" || value.trim().length === 0) {
@@ -141,6 +149,7 @@ async function main() {
       imagePath: assets?.imagePath ?? null,
       brochureFile: assets?.brochureFile ?? null,
       isActive: true,
+      visibleInIndex: true,
       sortOrder: index,
     };
 
@@ -164,6 +173,27 @@ async function main() {
     },
     data: {
       isActive: false,
+    },
+  });
+
+  await prisma.generalJournal.upsert({
+    where: {
+      id: "platform-journal-seed",
+    },
+    update: {
+      titleFa: "ژورنال پلتفرم",
+      titleEn: "Platform Journal",
+      fileName: "platform-journal.pdf",
+      originalFileName: "platform jornal.pdf",
+      isActive: true,
+    },
+    create: {
+      id: "platform-journal-seed",
+      titleFa: "ژورنال پلتفرم",
+      titleEn: "Platform Journal",
+      fileName: "platform-journal.pdf",
+      originalFileName: "platform jornal.pdf",
+      isActive: true,
     },
   });
 }

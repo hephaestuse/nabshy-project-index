@@ -1,4 +1,5 @@
 import type { Locale } from "@/types/locale";
+import type { JobTitleOption } from "@/types/registration";
 
 export type ProjectsMessages = {
   locale: Locale;
@@ -21,15 +22,26 @@ export type ProjectsMessages = {
   selectOne: string;
   closeModal: string;
   continueToDownload: string;
+  submittingRegistration: string;
+  preparingDownload: string;
+  downloadError: string;
   successMessage: string;
   languageSwitchLabel: string;
   languageSwitchTarget: string;
   validation: {
     fullNameRequired: string;
+    fullNameTooLong: string;
     phoneRequired: string;
+    phoneInvalid: string;
     jobTitleRequired: string;
+    jobTitleInvalid: string;
+    projectRequired: string;
+    projectNotFound: string;
+    brochureNotAvailable: string;
+    sessionRetry: string;
+    internalError: string;
   };
-  jobTitles: string[];
+  jobTitles: JobTitleOption[];
 };
 
 const englishMessages: ProjectsMessages = {
@@ -54,23 +66,33 @@ const englishMessages: ProjectsMessages = {
   selectOne: "Select one",
   closeModal: "Close registration modal",
   continueToDownload: "Continue to Download",
-  successMessage:
-    "Registration completed. Download will be enabled in the next phase.",
+  submittingRegistration: "Preparing Download",
+  preparingDownload: "Preparing download...",
+  downloadError: "Download could not be started. Please try again.",
+  successMessage: "Your download is starting.",
   languageSwitchLabel: "Switch language to Persian",
   languageSwitchTarget: "fa",
   validation: {
     fullNameRequired: "Full name is required.",
+    fullNameTooLong: "Full name must be 120 characters or fewer.",
     phoneRequired: "Phone number is required.",
+    phoneInvalid: "Enter a valid phone number.",
     jobTitleRequired: "Job title is required.",
+    jobTitleInvalid: "Select a valid job title.",
+    projectRequired: "Select a project to download.",
+    projectNotFound: "This project is no longer available.",
+    brochureNotAvailable: "This brochure is not available yet.",
+    sessionRetry: "Please register again to continue.",
+    internalError: "Something went wrong. Please try again.",
   },
   jobTitles: [
-    "Architect",
-    "Developer",
-    "Contractor",
-    "Consultant",
-    "Interior Designer",
-    "Real Estate Agent",
-    "Other",
+    { value: "architect", label: "Architect" },
+    { value: "developer", label: "Developer" },
+    { value: "contractor", label: "Contractor" },
+    { value: "consultant", label: "Consultant" },
+    { value: "interior-designer", label: "Interior Designer" },
+    { value: "real-estate-agent", label: "Real Estate Agent" },
+    { value: "other", label: "Other" },
   ],
 };
 
@@ -96,23 +118,33 @@ const persianMessages: ProjectsMessages = {
   selectOne: "انتخاب کنید",
   closeModal: "بستن پنجره ثبت علاقه‌مندی",
   continueToDownload: "ادامه برای دانلود",
-  successMessage:
-    "ثبت‌نام انجام شد. دانلود در مرحله بعدی فعال خواهد شد.",
+  submittingRegistration: "در حال آماده‌سازی دانلود",
+  preparingDownload: "در حال آماده‌سازی دانلود...",
+  downloadError: "دانلود شروع نشد. دوباره تلاش کنید.",
+  successMessage: "دانلود شما در حال شروع شدن است.",
   languageSwitchLabel: "تغییر زبان به انگلیسی",
   languageSwitchTarget: "en",
   validation: {
     fullNameRequired: "وارد کردن نام و نام خانوادگی الزامی است.",
+    fullNameTooLong: "نام و نام خانوادگی باید حداکثر ۱۲۰ کاراکتر باشد.",
     phoneRequired: "وارد کردن شماره تماس الزامی است.",
+    phoneInvalid: "شماره تماس معتبر وارد کنید.",
     jobTitleRequired: "انتخاب عنوان شغلی الزامی است.",
+    jobTitleInvalid: "عنوان شغلی معتبر انتخاب کنید.",
+    projectRequired: "یک پروژه برای دانلود انتخاب کنید.",
+    projectNotFound: "این پروژه دیگر در دسترس نیست.",
+    brochureNotAvailable: "بروشور این پروژه هنوز آماده نیست.",
+    sessionRetry: "برای ادامه دوباره ثبت‌نام کنید.",
+    internalError: "مشکلی پیش آمد. دوباره تلاش کنید.",
   },
   jobTitles: [
-    "معمار",
-    "توسعه‌دهنده",
-    "پیمانکار",
-    "مشاور",
-    "طراح داخلی",
-    "مشاور املاک",
-    "سایر",
+    { value: "architect", label: "معمار" },
+    { value: "developer", label: "توسعه‌دهنده" },
+    { value: "contractor", label: "پیمانکار" },
+    { value: "consultant", label: "مشاور" },
+    { value: "interior-designer", label: "طراح داخلی" },
+    { value: "real-estate-agent", label: "مشاور املاک" },
+    { value: "other", label: "سایر" },
   ],
 };
 

@@ -7,24 +7,38 @@ import {
   MouseEvent,
   useEffect,
   useRef,
+  useState,
 } from "react";
+import { registerForDownloadAction } from "@/actions/register-for-download.action";
 import type { ProjectsMessages } from "@/data/projects-localization";
+import type { DownloadTarget } from "@/types/download";
+import type { RegisterForDownloadResult } from "@/types/registration";
 
 type RegistrationModalProps = {
   messages: ProjectsMessages;
   isOpen: boolean;
+  target: DownloadTarget | null;
   onClose: () => void;
-  onSuccess: () => void;
+  onSuccess: (downloadUrl: string) => void;
 };
 
 export function RegistrationModal({
   messages,
   isOpen,
+  target,
   onClose,
   onSuccess,
 }: RegistrationModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<
+    NonNullable<
+      Extract<RegisterForDownloadResult, { success: false }>["fieldErrors"]
+    >
+  >({});
+  const [generalError, setGeneralError] = useState("");
   const labelClassName =
     messages.locale === "fa"
       ? "text-sm font-bold"
@@ -67,7 +81,47 @@ export function RegistrationModal({
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSuccess();
+    setFieldErrors({});
+    setGeneralError("");
+
+    if (isSubmitting) {
+      return;
+    }
+
+    if (!target) {
+      setGeneralError(messages.validation.projectRequired);
+      return;
+    }
+
+    const formData = new FormData(event.currentTarget);
+    const fullName = String(formData.get("fullName") ?? "");
+    const phone = String(formData.get("phone") ?? "");
+    const jobTitle = String(formData.get("jobTitle") ?? "");
+
+    setIsSubmitting(true);
+    void (async () => {
+      try {
+        const result = await registerForDownloadAction({
+          targetType: target.type,
+          projectSlug: target.type === "project" ? target.slug : undefined,
+          fullName,
+          phone,
+          jobTitle,
+          locale: messages.locale,
+        });
+
+        if (result.success) {
+          formRef.current?.reset();
+          onSuccess(result.downloadUrl);
+          return;
+        }
+
+        setFieldErrors(result.fieldErrors ?? {});
+        setGeneralError(result.message ?? messages.validation.internalError);
+      } finally {
+        setIsSubmitting(false);
+      }
+    })();
   };
 
   const clearValidationMessage = (
@@ -149,7 +203,19 @@ export function RegistrationModal({
           {messages.modalDescription}
         </p>
 
-        <form className="mt-7 space-y-5" onSubmit={handleSubmit}>
+        {target ? (
+          <p className="mt-4 text-sm font-semibold text-[#071A33]">
+            {target.title}
+          </p>
+        ) : null}
+
+        {generalError ? (
+          <p role="alert" className="mt-4 text-sm font-semibold text-red-700">
+            {generalError}
+          </p>
+        ) : null}
+
+        <form ref={formRef} className="mt-7 space-y-5" onSubmit={handleSubmit}>
           <label className="block">
             <span className={labelClassName}>
               {messages.fullName}
@@ -159,12 +225,19 @@ export function RegistrationModal({
               name="fullName"
               type="text"
               autoComplete="name"
+              maxLength={120}
+              disabled={isSubmitting}
               onInput={clearValidationMessage}
               onInvalid={setValidationMessage(
                 messages.validation.fullNameRequired,
               )}
               className="mt-2 w-full border border-[#071A33]/25 bg-white px-4 py-3 text-base outline-none transition focus-visible:border-[#071A33] focus-visible:ring-2 focus-visible:ring-[#071A33]/35"
             />
+            {fieldErrors.fullName?.map((error) => (
+              <span key={error} className="mt-2 block text-sm text-red-700">
+                {error}
+              </span>
+            ))}
           </label>
 
           <label className="block">
@@ -176,10 +249,16 @@ export function RegistrationModal({
               name="phone"
               type="tel"
               autoComplete="tel"
+              disabled={isSubmitting}
               onInput={clearValidationMessage}
               onInvalid={setValidationMessage(messages.validation.phoneRequired)}
               className="mt-2 w-full border border-[#071A33]/25 bg-white px-4 py-3 text-base outline-none transition focus-visible:border-[#071A33] focus-visible:ring-2 focus-visible:ring-[#071A33]/35"
             />
+            {fieldErrors.phone?.map((error) => (
+              <span key={error} className="mt-2 block text-sm text-red-700">
+                {error}
+              </span>
+            ))}
           </label>
 
           <label className="block">
@@ -190,6 +269,7 @@ export function RegistrationModal({
               required
               name="jobTitle"
               defaultValue=""
+              disabled={isSubmitting}
               onInput={clearValidationMessage}
               onInvalid={setValidationMessage(
                 messages.validation.jobTitleRequired,
@@ -200,18 +280,26 @@ export function RegistrationModal({
                 {messages.selectOne}
               </option>
               {messages.jobTitles.map((title) => (
-                <option key={title} value={title}>
-                  {title}
+                <option key={title.value} value={title.value}>
+                  {title.label}
                 </option>
               ))}
             </select>
+            {fieldErrors.jobTitle?.map((error) => (
+              <span key={error} className="mt-2 block text-sm text-red-700">
+                {error}
+              </span>
+            ))}
           </label>
 
           <button
             type="submit"
+            disabled={isSubmitting}
             className={submitClassName}
           >
-            {messages.continueToDownload}
+            {isSubmitting
+              ? messages.submittingRegistration
+              : messages.continueToDownload}
           </button>
         </form>
       </div>

@@ -8,7 +8,16 @@ export const metadata: Metadata = {
 };
 
 export default async function PersianProjectsPage() {
-  const projects = await projectService.getActiveProjects("fa");
+  const [projects, heroDownloadTarget] = await Promise.all([
+    projectService.getActiveProjects("fa"),
+    projectService.getHeroDownloadTarget("fa"),
+  ]);
 
-  return <LocalizedProjectsPage locale="fa" projects={projects} />;
+  return (
+    <LocalizedProjectsPage
+      locale="fa"
+      projects={projects}
+      heroDownloadTarget={heroDownloadTarget}
+    />
+  );
 }
