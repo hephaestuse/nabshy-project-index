@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nabshy Pro",
-  description: "Premium real estate brochure UI prototype.",
+  title: "Nabshy Project Index",
+  description: "see the projects and download the latest jornals",
 };
 
 export default function RootLayout({
