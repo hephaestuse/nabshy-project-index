@@ -16,8 +16,9 @@ export default async function AdminLoginPage() {
   }
 
   return (
-    <div className="mx-auto max-w-sm border border-black/15 bg-white p-6">
-      <h1 className="text-2xl font-semibold">Admin login</h1>
+    <div className="mx-auto mt-[12vh] max-w-md admin-panel admin-panel-pad">
+      <p className="text-xs font-bold uppercase tracking-[0.12em] text-black/55">Nabshy</p>
+      <h1 className="mt-3 text-3xl font-semibold">Admin login</h1>
       <div className="mt-6">
         <AdminLoginForm />
       </div>

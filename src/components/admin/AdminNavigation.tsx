@@ -11,16 +11,16 @@ const links = [
 
 export function AdminNavigation() {
   return (
-    <nav className="border-b border-black/15 bg-white px-4 py-3 text-black">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3">
-        <Link href="/admin" className="me-4 font-bold">
-          Nabshy Admin
+    <nav className="border-b border-black bg-black px-4 py-3 text-white">
+      <div className="mx-auto flex max-w-[80rem] flex-wrap items-center gap-x-1 gap-y-2">
+        <Link href="/admin" className="me-4 px-2 py-2 text-sm font-bold uppercase tracking-[0.14em]">
+          Nabshy / Admin
         </Link>
         {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className="px-2 py-1 text-sm font-semibold hover:bg-[#f7f5f0] focus:outline-none focus:ring-2 focus:ring-black"
+            className="px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white"
           >
             {link.label}
           </Link>
@@ -28,7 +28,7 @@ export function AdminNavigation() {
         <form action={logoutAdminAction} className="ms-auto">
           <button
             type="submit"
-            className="px-3 py-2 text-sm font-bold hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-black"
+            className="border border-white/45 px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white"
           >
             Logout
           </button>

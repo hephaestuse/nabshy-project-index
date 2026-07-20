@@ -15,10 +15,15 @@ export default async function DownloadReportsPage() {
   ]);
 
   return (
-    <>
-      <h1 className="text-3xl font-semibold">Download Reports</h1>
-      <section className="mt-6">
-        <h2 className="text-xl font-semibold">Project brochure downloads</h2>
+    <div>
+      <header className="admin-page-header">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-black/55">Activity</p>
+          <h1 className="admin-page-title mt-3">Download reports</h1>
+        </div>
+      </header>
+      <section className="mt-8">
+        <h2 className="admin-section-title">Project brochure downloads</h2>
         <ReportTable
           rows={projects.map((project) => ({
             id: project.id,
@@ -31,8 +36,8 @@ export default async function DownloadReportsPage() {
           }))}
         />
       </section>
-      <section className="mt-8">
-        <h2 className="text-xl font-semibold">General journal downloads</h2>
+      <section className="mt-10">
+        <h2 className="admin-section-title">General journal downloads</h2>
         <ReportTable
           rows={journals.map((journal) => ({
             id: journal.id,
@@ -45,7 +50,7 @@ export default async function DownloadReportsPage() {
           }))}
         />
       </section>
-    </>
+    </div>
   );
 }
 
@@ -63,31 +68,31 @@ function ReportTable({
   }[];
 }) {
   if (rows.length === 0) {
-    return <p className="mt-4 border border-black/15 bg-white p-5">No download events.</p>;
+    return <p className="admin-panel admin-panel-pad mt-4 text-sm text-black/65">No download events.</p>;
   }
 
   return (
-    <div className="mt-4 overflow-x-auto border border-black/15 bg-white">
-      <table className="min-w-full text-sm">
-        <thead className="bg-[#f7f5f0] text-left">
+    <div className="admin-table mt-4">
+      <table>
+        <thead>
           <tr>
-            <th className="p-3">Title</th>
-            <th className="p-3">Status</th>
-            <th className="p-3">Total</th>
-            <th className="p-3">Unique users</th>
-            <th className="p-3">Last download</th>
-            <th className="p-3">Details</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>Unique users</th>
+            <th>Last download</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => (
-            <tr key={row.id} className="border-t">
-              <td className="p-3">{row.title}</td>
-              <td className="p-3">{row.status}</td>
-              <td className="p-3">{row.total}</td>
-              <td className="p-3">{row.unique}</td>
-              <td className="p-3">{row.last ?? "-"}</td>
-              <td className="p-3"><Link href={row.href} className="underline">View</Link></td>
+            <tr key={row.id}>
+              <td>{row.title}</td>
+              <td>{row.status}</td>
+              <td>{row.total}</td>
+              <td>{row.unique}</td>
+              <td>{row.last ?? "-"}</td>
+              <td><Link href={row.href} className="admin-table-action">View</Link></td>
             </tr>
           ))}
         </tbody>

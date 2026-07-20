@@ -11,11 +11,13 @@ export default async function NewProjectPage() {
   );
 
   return (
-    <>
-      <h1 className="text-3xl font-semibold">New project</h1>
-      <div className="mt-6 border border-black/15 bg-white p-5">
+    <div>
+      <header className="admin-page-header">
+        <h1 className="admin-page-title">New project</h1>
+      </header>
+      <div className="admin-panel admin-panel-pad mt-8">
         <ProjectForm action={createProjectAction} />
       </div>
-    </>
+    </div>
   );
 }

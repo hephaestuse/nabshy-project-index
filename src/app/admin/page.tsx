@@ -12,9 +12,14 @@ export default async function AdminDashboardPage() {
   const summary = await reportService.getAdminDashboardSummary();
 
   return (
-    <>
-      <h1 className="text-3xl font-semibold">Dashboard</h1>
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <header className="admin-page-header">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-black/55">Overview</p>
+          <h1 className="admin-page-title mt-3">Dashboard</h1>
+        </div>
+      </header>
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <SummaryCard label="Total projects" value={summary.totalProjects} />
         <SummaryCard label="Active projects" value={summary.activeProjects} />
         <SummaryCard label="Inactive projects" value={summary.inactiveProjects} />
@@ -24,6 +29,6 @@ export default async function AdminDashboardPage() {
         <SummaryCard label="Unique project downloaders" value={summary.uniqueProjectDownloaders} />
         <SummaryCard label="Unique journal downloaders" value={summary.uniqueJournalDownloaders} />
       </div>
-    </>
+    </div>
   );
 }

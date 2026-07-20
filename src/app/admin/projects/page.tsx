@@ -13,16 +13,19 @@ export default async function AdminProjectsPage() {
   const projects = await adminProjectService.listProjects();
 
   return (
-    <>
-      <div className="flex items-center justify-between gap-4">
-        <h1 className="text-3xl font-semibold">Projects</h1>
-        <Link href="/admin/projects/new" className="bg-black px-4 py-2 text-sm font-bold text-white">
+    <div>
+      <div className="admin-page-header">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-black/55">Content library</p>
+          <h1 className="admin-page-title mt-3">Projects</h1>
+        </div>
+        <Link href="/admin/projects/new" className="admin-button">
           New project
         </Link>
       </div>
-      <div className="mt-6">
+      <div className="mt-8">
         <ProjectTable projects={projects} />
       </div>
-    </>
+    </div>
   );
 }

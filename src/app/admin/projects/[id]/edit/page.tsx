@@ -25,11 +25,13 @@ export default async function EditProjectPage({
   const action = updateProjectAction.bind(null, id);
 
   return (
-    <>
-      <h1 className="text-3xl font-semibold">Edit project</h1>
-      <div className="mt-6 border border-black/15 bg-white p-5">
+    <div>
+      <header className="admin-page-header">
+        <h1 className="admin-page-title">Edit project</h1>
+      </header>
+      <div className="admin-panel admin-panel-pad mt-8">
         <ProjectForm action={action} project={project} />
       </div>
-    </>
+    </div>
   );
 }

@@ -107,6 +107,208 @@ body {
   font-family: "Abar Low", Tahoma, Arial, sans-serif;
 }
 
+.admin-shell {
+  min-height: 100vh;
+  background: #f7f5f0;
+  color: #080808;
+}
+
+.admin-content {
+  width: min(100%, 80rem);
+  margin-inline: auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.admin-page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgb(0 0 0 / 0.14);
+}
+
+.admin-page-title {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.admin-section-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.admin-panel {
+  border: 1px solid rgb(0 0 0 / 0.14);
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.05);
+}
+
+.admin-panel-pad {
+  padding: 1.25rem;
+}
+
+.admin-button,
+.admin-button-quiet,
+.admin-table-action {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  outline: none;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.admin-button {
+  background: #000000;
+  color: #ffffff;
+}
+
+.admin-button:hover {
+  background: #262626;
+}
+
+.admin-button-quiet,
+.admin-table-action {
+  border: 1px solid rgb(0 0 0 / 0.18);
+  background: #ffffff;
+  color: #080808;
+}
+
+.admin-button-quiet:hover,
+.admin-table-action:hover {
+  border-color: #000000;
+  background: #000000;
+  color: #ffffff;
+}
+
+.admin-button:focus-visible,
+.admin-button-quiet:focus-visible,
+.admin-table-action:focus-visible,
+.admin-field:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.admin-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-field {
+  width: 100%;
+  min-height: 2.875rem;
+  margin-top: 0.625rem;
+  border: 1px solid rgb(0 0 0 / 0.22);
+  background: #ffffff;
+  padding: 0.625rem 0.75rem;
+  color: #080808;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.admin-field:hover {
+  border-color: rgb(0 0 0 / 0.48);
+}
+
+.admin-field:focus-visible {
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgb(0 0 0 / 0.12);
+}
+
+.admin-summary-card {
+  min-height: 8.5rem;
+  border: 1px solid rgb(0 0 0 / 0.14);
+  background: #ffffff;
+  padding: 1.25rem;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.05);
+}
+
+.admin-summary-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(0 0 0 / 0.58);
+}
+
+.admin-summary-value {
+  margin-top: 1.25rem;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.admin-table {
+  overflow-x: auto;
+  border: 1px solid rgb(0 0 0 / 0.14);
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.05);
+}
+
+.admin-table table {
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.admin-table thead {
+  background: #eceae5;
+  color: rgb(0 0 0 / 0.62);
+}
+
+.admin-table th {
+  padding: 0.875rem 1rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.admin-table td {
+  padding: 1rem;
+  border-top: 1px solid rgb(0 0 0 / 0.1);
+  vertical-align: middle;
+}
+
+.admin-table tbody tr {
+  transition: background-color 160ms ease;
+}
+
+.admin-table tbody tr:hover {
+  background: #f7f5f0;
+}
+
+@media (min-width: 640px) {
+  .admin-content {
+    padding: 2.5rem 2rem 4rem;
+  }
+
+  .admin-page-title {
+    font-size: 2.25rem;
+  }
+
+  .admin-panel-pad {
+    padding: 1.75rem;
+  }
+}
+
 * {
   box-sizing: border-box;
 }

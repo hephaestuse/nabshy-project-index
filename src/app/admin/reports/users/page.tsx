@@ -12,14 +12,19 @@ export default async function UserReportsPage() {
   const users = await reportService.getRegisteredUserSummaries();
 
   return (
-    <>
-      <h1 className="text-3xl font-semibold">Registered Users</h1>
+    <div>
+      <header className="admin-page-header">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-black/55">Audience</p>
+          <h1 className="admin-page-title mt-3">Registered users</h1>
+        </div>
+      </header>
       {users.length === 0 ? (
-        <p className="mt-6 border border-black/15 bg-white p-5">No registered users.</p>
+        <p className="admin-panel admin-panel-pad mt-8 text-sm text-black/65">No registered users.</p>
       ) : (
-        <div className="mt-6 overflow-x-auto border border-black/15 bg-white">
-          <table className="min-w-full text-sm">
-            <thead className="bg-[#f7f5f0] text-left">
+        <div className="admin-table mt-8">
+          <table>
+            <thead>
               <tr>
                 <th className="p-3">Name</th><th className="p-3">Phone</th>
                 <th className="p-3">Job</th><th className="p-3">Registered</th>
@@ -29,17 +34,17 @@ export default async function UserReportsPage() {
               </tr>
             </thead>
             <tbody>{users.map((user) => (
-              <tr key={user.id} className="border-t">
+              <tr key={user.id}>
                 <td className="p-3">{user.fullName}</td><td className="p-3">{user.phone}</td>
                 <td className="p-3">{user.jobTitle}</td><td className="p-3">{user.createdAt}</td>
                 <td className="p-3">{user.projectDownloads}</td><td className="p-3">{user.journalDownloads}</td>
                 <td className="p-3">{user.totalDownloads}</td><td className="p-3">{user.lastActivity ?? "-"}</td>
-                <td className="p-3"><Link className="underline" href={`/admin/reports/users/${user.id}`}>View</Link></td>
+                <td className="p-3"><Link className="admin-table-action" href={`/admin/reports/users/${user.id}`}>View</Link></td>
               </tr>
             ))}</tbody>
           </table>
         </div>
       )}
-    </>
+    </div>
   );
 }
