@@ -44,7 +44,7 @@ function Breakdown({
       {rows.length === 0 ? (
         <p className="mt-4">No downloads.</p>
       ) : (
-        <div className="mt-4 overflow-x-auto border border-[#071A33]/15 bg-white">
+        <div className="mt-4 overflow-x-auto border border-black/15 bg-white">
           <table className="min-w-full text-sm">
             <thead className="bg-[#f7f5f0] text-left">
               <tr><th className="p-3">Title</th><th className="p-3">Count</th><th className="p-3">First</th><th className="p-3">Last</th></tr>

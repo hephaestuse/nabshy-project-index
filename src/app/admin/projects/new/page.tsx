@@ -13,7 +13,7 @@ export default async function NewProjectPage() {
   return (
     <>
       <h1 className="text-3xl font-semibold">New project</h1>
-      <div className="mt-6 border border-[#071A33]/15 bg-white p-5">
+      <div className="mt-6 border border-black/15 bg-white p-5">
         <ProjectForm action={createProjectAction} />
       </div>
     </>

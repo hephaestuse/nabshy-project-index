@@ -49,8 +49,8 @@ export function RegistrationModal({
       : "pe-12 text-2xl font-light uppercase tracking-[0.16em]";
   const submitClassName =
     messages.locale === "fa"
-      ? "w-full bg-[#071A33] px-6 py-4 text-sm font-bold text-white outline-none transition hover:bg-black focus-visible:ring-2 focus-visible:ring-[#071A33] focus-visible:ring-offset-4 focus-visible:ring-offset-[#f7f5f0]"
-      : "w-full bg-[#071A33] px-6 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white outline-none transition hover:bg-black focus-visible:ring-2 focus-visible:ring-[#071A33] focus-visible:ring-offset-4 focus-visible:ring-offset-[#f7f5f0]";
+      ? "w-full bg-black px-6 py-4 text-sm font-bold text-white outline-none transition hover:bg-neutral-800 focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4 focus-visible:ring-offset-[#f7f5f0]"
+      : "w-full bg-black px-6 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white outline-none transition hover:bg-neutral-800 focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4 focus-visible:ring-offset-[#f7f5f0]";
 
   useEffect(() => {
     if (!isOpen) {
@@ -179,7 +179,7 @@ export function RegistrationModal({
         aria-modal="true"
         aria-labelledby="registration-modal-title"
         dir={messages.dir}
-        className="relative max-h-[calc(100dvh-2rem)] w-full max-w-[32rem] overflow-y-auto bg-[#f7f5f0] px-6 py-7 text-[#071A33] outline-none sm:px-9 sm:py-9"
+        className="relative max-h-[calc(100dvh-2rem)] w-full max-w-[32rem] overflow-y-auto bg-[#f7f5f0] px-6 py-7 text-black outline-none sm:px-9 sm:py-9"
         onMouseDown={stopPropagation}
         onKeyDown={handleDialogKeyDown}
       >
@@ -188,7 +188,7 @@ export function RegistrationModal({
           type="button"
           onClick={onClose}
           aria-label={messages.closeModal}
-          className="absolute end-4 top-4 flex h-10 w-10 items-center justify-center text-2xl leading-none text-[#071A33] outline-none transition hover:bg-[#071A33] hover:text-white focus-visible:ring-2 focus-visible:ring-[#071A33]"
+          className="absolute end-4 top-4 flex h-10 w-10 items-center justify-center text-2xl leading-none text-black outline-none transition hover:bg-black hover:text-white focus-visible:ring-2 focus-visible:ring-black"
         >
           ×
         </button>
@@ -199,12 +199,12 @@ export function RegistrationModal({
         >
           {messages.modalTitle}
         </h2>
-        <p className="mt-3 max-w-sm text-sm leading-6 text-[#24344c]">
+        <p className="mt-3 max-w-sm text-sm leading-6 text-neutral-600">
           {messages.modalDescription}
         </p>
 
         {target ? (
-          <p className="mt-4 text-sm font-semibold text-[#071A33]">
+          <p className="mt-4 text-sm font-semibold text-black">
             {target.title}
           </p>
         ) : null}
@@ -231,7 +231,7 @@ export function RegistrationModal({
               onInvalid={setValidationMessage(
                 messages.validation.fullNameRequired,
               )}
-              className="mt-2 w-full border border-[#071A33]/25 bg-white px-4 py-3 text-base outline-none transition focus-visible:border-[#071A33] focus-visible:ring-2 focus-visible:ring-[#071A33]/35"
+              className="mt-2 w-full border border-black/25 bg-white px-4 py-3 text-base outline-none transition focus-visible:border-black focus-visible:ring-2 focus-visible:ring-black/35"
             />
             {fieldErrors.fullName?.map((error) => (
               <span key={error} className="mt-2 block text-sm text-red-700">
@@ -252,7 +252,7 @@ export function RegistrationModal({
               disabled={isSubmitting}
               onInput={clearValidationMessage}
               onInvalid={setValidationMessage(messages.validation.phoneRequired)}
-              className="mt-2 w-full border border-[#071A33]/25 bg-white px-4 py-3 text-base outline-none transition focus-visible:border-[#071A33] focus-visible:ring-2 focus-visible:ring-[#071A33]/35"
+              className="mt-2 w-full border border-black/25 bg-white px-4 py-3 text-base outline-none transition focus-visible:border-black focus-visible:ring-2 focus-visible:ring-black/35"
             />
             {fieldErrors.phone?.map((error) => (
               <span key={error} className="mt-2 block text-sm text-red-700">
@@ -274,7 +274,7 @@ export function RegistrationModal({
               onInvalid={setValidationMessage(
                 messages.validation.jobTitleRequired,
               )}
-              className="mt-2 w-full border border-[#071A33]/25 bg-white px-4 py-3 text-base outline-none transition focus-visible:border-[#071A33] focus-visible:ring-2 focus-visible:ring-[#071A33]/35"
+              className="mt-2 w-full border border-black/25 bg-white px-4 py-3 text-base outline-none transition focus-visible:border-black focus-visible:ring-2 focus-visible:ring-black/35"
             >
               <option value="" disabled>
                 {messages.selectOne}

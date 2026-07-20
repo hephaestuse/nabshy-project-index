@@ -147,14 +147,14 @@ export function ProjectsSection({
                 aria-controls="iran-city-options"
                 aria-expanded={hasCitySuggestions}
                 aria-label={messages.cityFilterPlaceholder}
-                className="h-12 w-full border border-[#071A33]/20 bg-white px-4 text-sm text-[#080808] outline-none transition focus:border-[#071A33] focus:ring-2 focus:ring-[#071A33]/15"
+                className="h-12 w-full border border-black/20 bg-white px-4 text-sm text-[#080808] outline-none transition focus:border-black focus:ring-2 focus:ring-black/15"
               />
 
               {hasCitySuggestions ? (
                 <ul
                   id="iran-city-options"
                   role="listbox"
-                  className="absolute left-0 right-0 top-[calc(100%+0.35rem)] z-20 max-h-72 overflow-auto border border-[#071A33]/12 bg-white shadow-lg"
+                  className="absolute left-0 right-0 top-[calc(100%+0.35rem)] z-20 max-h-72 overflow-auto border border-black/12 bg-white shadow-lg"
                 >
                   {visibleCityOptions.map((city) => (
                     <li key={city.id} role="option" aria-selected={false}>
@@ -168,7 +168,7 @@ export function ProjectsSection({
                         className="flex w-full items-center justify-between gap-4 px-4 py-3 text-start text-sm text-[#080808] transition hover:bg-[#f7f5f0] focus:bg-[#f7f5f0] focus:outline-none"
                       >
                         <span>{city.name}</span>
-                        <span className="text-xs text-[#071A33]/55">
+                        <span className="text-xs text-black/55">
                           {city.province}
                         </span>
                       </button>
@@ -181,7 +181,7 @@ export function ProjectsSection({
             <select
               value={usageFilter}
               onChange={(event) => setUsageFilter(event.target.value)}
-              className="appearance-none h-12 w-full border border-[#071A33]/20 bg-white px-4 text-sm text-[#080808] outline-none transition focus:border-[#071A33] focus:ring-2 focus:ring-[#071A33]/15"
+              className="appearance-none h-12 w-full border border-black/20 bg-white px-4 text-sm text-[#080808] outline-none transition focus:border-black focus:ring-2 focus:ring-black/15"
             >
               <option value="">{messages.allUsages}</option>
               {usageOptions.map((usage) => (
@@ -198,7 +198,7 @@ export function ProjectsSection({
                 setUsageFilter("");
               }}
               disabled={!hasFilters}
-              className="h-12 border border-[#071A33] px-5 text-xs font-bold text-[#071A33] transition hover:bg-[#071A33] hover:text-white disabled:cursor-not-allowed disabled:border-[#071A33]/15 disabled:text-[#071A33]/30 disabled:hover:bg-transparent"
+              className="h-12 border border-black px-5 text-xs font-bold text-black transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:border-black/15 disabled:text-black/30 disabled:hover:bg-transparent"
             >
               {messages.resetFilters}
             </button>
@@ -218,7 +218,7 @@ export function ProjectsSection({
             ))}
           </div>
         ) : (
-          <div className="border border-[#071A33]/12 bg-white px-5 py-12 text-center text-sm font-semibold text-[#071A33]">
+          <div className="border border-black/12 bg-white px-5 py-12 text-center text-sm font-semibold text-black">
             {messages.noProjectsTitle}
           </div>
         )}

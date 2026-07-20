@@ -19,7 +19,7 @@ export function AdminLoginForm() {
           name="username"
           required
           autoComplete="username"
-          className="mt-2 w-full border border-[#071A33]/25 px-3 py-2 outline-none focus:ring-2 focus:ring-[#071A33]"
+          className="mt-2 w-full border border-black/25 px-3 py-2 outline-none focus:ring-2 focus:ring-black"
         />
       </label>
       <label className="block">
@@ -29,13 +29,13 @@ export function AdminLoginForm() {
           required
           type="password"
           autoComplete="current-password"
-          className="mt-2 w-full border border-[#071A33]/25 px-3 py-2 outline-none focus:ring-2 focus:ring-[#071A33]"
+          className="mt-2 w-full border border-black/25 px-3 py-2 outline-none focus:ring-2 focus:ring-black"
         />
       </label>
       <button
         type="submit"
         disabled={isPending}
-        className="w-full bg-[#071A33] px-4 py-3 text-sm font-bold text-white disabled:opacity-50"
+        className="w-full bg-black px-4 py-3 text-sm font-bold text-white disabled:opacity-50"
       >
         {isPending ? "Signing in..." : "Sign in"}
       </button>

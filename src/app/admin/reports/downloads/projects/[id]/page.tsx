@@ -57,7 +57,7 @@ function UserBreakdown({
   if (rows.length === 0) return <p className="mt-6">No download events.</p>;
 
   return (
-    <div className="mt-6 overflow-x-auto border border-[#071A33]/15 bg-white">
+    <div className="mt-6 overflow-x-auto border border-black/15 bg-white">
       <table className="min-w-full text-sm">
         <thead className="bg-[#f7f5f0] text-left">
           <tr>

@@ -128,7 +128,7 @@ export function ProjectsExperience({
   const showStatus = statusMessage.length > 0 || showSuccess;
   const statusClassName = downloadError
     ? "fixed bottom-5 left-1/2 z-40 w-[min(calc(100vw-2rem),32rem)] -translate-x-1/2 bg-red-700 px-5 py-4 text-center text-sm font-medium text-white shadow-none"
-    : "fixed bottom-5 left-1/2 z-40 w-[min(calc(100vw-2rem),32rem)] -translate-x-1/2 bg-[#071A33] px-5 py-4 text-center text-sm font-medium text-white shadow-none";
+    : "fixed bottom-5 left-1/2 z-40 w-[min(calc(100vw-2rem),32rem)] -translate-x-1/2 bg-black px-5 py-4 text-center text-sm font-medium text-white shadow-none";
   const statusText = showSuccess ? messages.successMessage : statusMessage;
 
   return (

@@ -16,11 +16,11 @@ type AdminProjectRow = {
 
 export function ProjectTable({ projects }: { projects: AdminProjectRow[] }) {
   if (projects.length === 0) {
-    return <p className="border border-[#071A33]/15 bg-white p-5">No projects.</p>;
+    return <p className="border border-black/15 bg-white p-5">No projects.</p>;
   }
 
   return (
-    <div className="overflow-x-auto border border-[#071A33]/15 bg-white">
+    <div className="overflow-x-auto border border-black/15 bg-white">
       <table className="min-w-full text-sm">
         <thead className="bg-[#f7f5f0] text-left">
           <tr>

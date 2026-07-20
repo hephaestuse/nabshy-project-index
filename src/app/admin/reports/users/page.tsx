@@ -15,9 +15,9 @@ export default async function UserReportsPage() {
     <>
       <h1 className="text-3xl font-semibold">Registered Users</h1>
       {users.length === 0 ? (
-        <p className="mt-6 border border-[#071A33]/15 bg-white p-5">No registered users.</p>
+        <p className="mt-6 border border-black/15 bg-white p-5">No registered users.</p>
       ) : (
-        <div className="mt-6 overflow-x-auto border border-[#071A33]/15 bg-white">
+        <div className="mt-6 overflow-x-auto border border-black/15 bg-white">
           <table className="min-w-full text-sm">
             <thead className="bg-[#f7f5f0] text-left">
               <tr>

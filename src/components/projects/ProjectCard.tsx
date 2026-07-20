@@ -26,8 +26,8 @@ export function ProjectCard({
 
   const ctaClassName =
     messages.locale === "fa"
-      ? "w-full max-w-[17rem] bg-white px-6 py-4 text-sm font-medium text-[#071A33] opacity-100 outline-none transition duration-300 hover:bg-[#071A33] hover:text-white focus-visible:ring-2 focus-visible:ring-white md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:opacity-100"
-      : "w-full max-w-[17rem] bg-white px-6 py-4 text-xs font-medium uppercase tracking-[0.22em] text-[#071A33] opacity-100 outline-none transition duration-300 hover:bg-[#071A33] hover:text-white focus-visible:ring-2 focus-visible:ring-white md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:opacity-100";
+      ? "w-full max-w-[17rem] bg-white px-6 py-4 text-sm font-medium text-black opacity-100 outline-none transition duration-300 hover:bg-black hover:text-white focus-visible:ring-2 focus-visible:ring-white md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:opacity-100"
+      : "w-full max-w-[17rem] bg-white px-6 py-4 text-xs font-medium uppercase tracking-[0.22em] text-black opacity-100 outline-none transition duration-300 hover:bg-black hover:text-white focus-visible:ring-2 focus-visible:ring-white md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:opacity-100";
 
   return (
     <article className="group relative aspect-3/4 overflow-hidden bg-[#969696] text-white">

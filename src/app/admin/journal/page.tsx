@@ -14,7 +14,7 @@ export default async function AdminJournalPage() {
   return (
     <>
       <h1 className="text-3xl font-semibold">General Journal</h1>
-      <section className="mt-6 border border-[#071A33]/15 bg-white p-5">
+      <section className="mt-6 border border-black/15 bg-white p-5">
         {journal ? (
           <dl className="grid gap-3 text-sm sm:grid-cols-2">
             <div><dt className="font-bold">Title</dt><dd>{journal.titleEn}</dd></div>
@@ -27,7 +27,7 @@ export default async function AdminJournalPage() {
           <p>No active journal.</p>
         )}
       </section>
-      <section className="mt-6 border border-[#071A33]/15 bg-white p-5">
+      <section className="mt-6 border border-black/15 bg-white p-5">
         <h2 className="text-xl font-semibold">Replace journal</h2>
         <div className="mt-5">
           <JournalForm />

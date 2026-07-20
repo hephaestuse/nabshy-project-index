@@ -16,7 +16,7 @@ export default async function AdminLoginPage() {
   }
 
   return (
-    <div className="mx-auto max-w-sm border border-[#071A33]/15 bg-white p-6">
+    <div className="mx-auto max-w-sm border border-black/15 bg-white p-6">
       <h1 className="text-2xl font-semibold">Admin login</h1>
       <div className="mt-6">
         <AdminLoginForm />

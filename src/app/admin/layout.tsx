@@ -11,7 +11,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
   );
 
   return (
-    <div className="min-h-screen bg-[#f7f5f0] text-[#071A33]">
+    <div className="min-h-screen bg-[#f7f5f0] text-black">
       {isAdmin ? <AdminNavigation /> : null}
       <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
     </div>

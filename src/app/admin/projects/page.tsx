@@ -16,7 +16,7 @@ export default async function AdminProjectsPage() {
     <>
       <div className="flex items-center justify-between gap-4">
         <h1 className="text-3xl font-semibold">Projects</h1>
-        <Link href="/admin/projects/new" className="bg-[#071A33] px-4 py-2 text-sm font-bold text-white">
+        <Link href="/admin/projects/new" className="bg-black px-4 py-2 text-sm font-bold text-white">
           New project
         </Link>
       </div>
