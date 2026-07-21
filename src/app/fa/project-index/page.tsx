@@ -3,8 +3,8 @@ import { LocalizedProjectsPage } from "@/components/projects/LocalizedProjectsPa
 import { projectService } from "@/services/project.service";
 
 export const metadata: Metadata = {
-  title: "پروژه‌ها | نبشی پرو",
-  description: "صفحه پروژه‌های نمونه رابط کاربری بروشور املاک لوکس.",
+  title: "project index",
+  description: "see the projects and download the latest jornals",
 };
 
 export default async function PersianProjectsPage() {

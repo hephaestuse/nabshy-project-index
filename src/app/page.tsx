@@ -4,19 +4,19 @@ const sections = [
   {
     title: "project index",
     subtitle: "Specialized Journal of Construction Projects",
-    href: "/projects",
+    href: "/project-index",
     image: "/images/home/section-1.jpg",
   },
   {
     title: "branding agency",
     subtitle: "Construction Industry Branding Agency",
-    href: "#advisory",
+    href: "https://nabshy.agency/",
     image: "/images/home/section-2.jpg",
   },
   {
     title: "material index",
     subtitle: "Premium launch intelligence",
-    href: "#briefs",
+    href: "#",
     image: "/images/home/section-3.jpg",
   },
 ];
